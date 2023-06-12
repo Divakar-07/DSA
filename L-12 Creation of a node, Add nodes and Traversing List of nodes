@@ -1,0 +1,57 @@
+// L-12  Creation of a node, Add nodes and Traversing List of nodes
+// 😎  2.
+struct node {
+    int data;
+    struct node * next;
+};
+typedef struct node * NODE;
+NODE createNodeInCLL() {
+    int data;
+    NODE newnode =(NODE)malloc(sizeof(struct node));
+    if(newnode == NULL){
+        printf("Memory allocation failed\n");
+        return NULL;
+    }
+    newnode->data=data;
+    newnode->next=newnode;
+    return newnode;
+    }
+    
+// 😎 3.
+struct node {
+    int data;
+    struct node *next;
+};
+typedef struct node *NODE;
+NODE createNodeInCLL() {
+    NODE temp;
+    temp = (NODE) malloc(sizeof(struct node));
+    temp -> next = NULL;
+    return temp;
+}
+NODE addNodesInCLL(NODE first, int x) {
+    NODE newnode = createNodeInCLL();
+    newnode->data=x;
+    if(first == NULL){
+        first = newnode;
+        newnode->next= first;
+    }else {
+        NODE cur = first;
+        while(cur->next != first){
+            cur=cur->next;
+        }
+        cur->next= newnode;
+        newnode->next= first;
+    }
+    return first;
+    
+}
+void traverseListInCLL(NODE first) {
+        NODE cur = first;
+        do{
+            printf("%d --> ",cur->data);
+            cur=cur->next;
+        }while(cur!=first);
+        printf("\n");
+    
+    }
