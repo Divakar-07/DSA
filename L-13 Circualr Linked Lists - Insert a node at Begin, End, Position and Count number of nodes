@@ -1,0 +1,117 @@
+// Circualr Linked Lists - Insert a node at Begin, End, Position and Count number of nodes
+// 😎 1.
+struct node {
+    int data;
+    struct node *next;
+};
+typedef struct node *NODE;
+NODE createNodeInCLL() {
+    NODE temp;
+    temp = (NODE) malloc(sizeof(struct node));
+    temp -> next = NULL;
+    return temp;
+}
+NODE insertAtBeginInCLL(NODE first, int x) {
+    NODE temp = createNodeInCLL();
+    temp->data=x;
+    if(first==NULL){
+        temp->next=temp;
+        return temp;
+    }
+    temp->next=first->next;
+    first->next=temp;
+    return first;
+    
+}
+int countInCLL(NODE first) {
+    int count =0;
+    if(first ==NULL){
+        return count;
+    }
+    NODE temp =first->next;
+    do{
+        count++;
+        temp =temp->next;
+    }while(temp!=first->next);
+    return count;
+}
+void traverseListInCLL(NODE first) {
+    NODE temp = first->next;
+    
+    do {
+        printf("%d --> ", temp -> data);
+        temp = temp -> next;
+    } while (temp != first->next);
+    printf("\n");
+}
+// 😎 2.
+struct node {
+    int data;
+    struct node *next;
+};
+typedef struct node *NODE;
+NODE createNodeInCLL() {
+    NODE temp;
+    temp = (NODE) malloc(sizeof(struct node));
+    temp -> next = NULL;
+    return temp;
+NODE insertAtEndInCLL(NODE first, int x) {
+    NODE temp =createNodeInCLL();
+    temp->data=x;
+    if(first == NULL){
+        temp->next=temp;
+        return temp;
+    }
+    temp->next=first->next;
+    first->next=temp;
+    first =temp;
+    return first;
+void traverseListInCLL(NODE first) {
+    NODE temp=first->next;
+    do{
+        printf("%d --> ",temp->data);
+        temp=temp->next;
+    }while(temp!= first->next);
+    printf("\n");
+    
+ // 😎 3.
+ struct node {
+    int data;
+    struct node *next;
+};
+typedef struct node *NODE;
+NODE createNodeInCLL() {
+    NODE temp = (NODE) malloc(sizeof(struct node));
+    temp -> next = NULL;
+    return temp;
+}
+NODE insertAtPositionInCLL(NODE first, int pos, int x) {
+    NODE p,l=first;
+    NODE temp=createNodeInCLL();
+    temp->data=x;
+    for(int i=1;i<pos-1;i++)
+    {if(l == NULL){
+            printf("No such position in CLL so insertion is not possible\n");
+            return first;
+        }
+        l=l->next;
+    }
+    
+    if(pos ==1){
+        temp->next=first;
+        first=temp;
+        
+    }else{
+        temp->next=l->next;
+        l->next=temp;
+    }
+    return first;
+}
+void traverseListInCLL(NODE first) {
+    NODE temp = first;
+    do{
+        printf("%d --> ", temp -> data);
+        temp = temp -> next;
+    } while (temp != NULL);
+    printf("\n");
+}
